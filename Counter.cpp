@@ -9,7 +9,7 @@ int Counter::Count (std::string fin) {
         return 0;
     } else {
         count = 0;
-        while(getline(fin, str)) {
+        while(std::getline(fin, str)) {
             for (char& c : str) {
                 if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) {
                     word+=c;
