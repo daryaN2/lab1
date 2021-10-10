@@ -9,6 +9,9 @@
 #include <list>
 #include <map>
 #include <fstream>
+#include <vector>
+#include <utility>
+#include <algorithm>
 
 class Counter
 {
@@ -22,3 +25,4 @@ private:
     std::map <std::string, int> words;
 };
 #endif //LAB1_COUNTER_H
+
