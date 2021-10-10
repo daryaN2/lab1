@@ -4,12 +4,12 @@
 #include "Counter.h"
 
 int Counter::Count (std::string fin) {
-    std::ifstream fin(fin);
-    if (!fin) {
+    std::ifstream in(fin);
+    if (!in) {
         return 0;
     } else {
         count = 0;
-        while(std::getline(fin, str)) {
+        while(std::getline(in, str)) {
             for (char& c : str) {
                 if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9')) {
                     word+=c;
@@ -20,25 +20,25 @@ int Counter::Count (std::string fin) {
                 }
             }
         }
-        fin.close();
+        in.close();
         return 1;
     }
 }
 
 int Counter:: Output (std::string fout) {
-    std::ofstream fout(fout);
-    if (!fout) {
+    std::ofstream out(fout);
+    if (!out) {
         return 0;
     } else {
-        std::vector <pair <std::string, double>> frequency;
+        std::vector <std::pair <std::string, double>> frequency;
         for (auto i : words) {
             frequency.emplace_back(make_pair(i.first, (double) i.second / count));
         }
-        sort (freq.rbegin(), freq.rend());
+        std::sort (frequency.rbegin(), frequency.rend());
         for (auto i : frequency) {
-            fout << i.first << << "," << words[i.first] << "," << i.second << "\n";
+            out << i.first << "," << words[i.first] << "," << i.second << "\n";
         }
-        fout.close();
+        out.close();
         return 1;
     }
 }
