@@ -30,13 +30,14 @@ int Counter:: Output (std::string fout) {
     if (!out) {
         return 0;
     } else {
-        std::vector <std::pair <std::string, double>> frequency;
+        std::list <std::pair <double, std::string>> wordList;
         for (auto i : words) {
-            frequency.emplace_back(make_pair(i.first, (double) i.second / count));
+            wordList.push_back(std::make_pair(i.second, i.first));
         }
-        std::sort (frequency.rbegin(), frequency.rend());
-        for (auto i : frequency) {
-            out << i.first << "," << words[i.first] << "," << i.second << "\n";
+        wordList.sort();
+        std::list <std::pair <double, std::string>>::iterator it;
+        for (auto it = wordList.begin(); it != wordList.end(); ++it) {
+            out << it->second << "," << it->first << "," << it->first*100/count << "\n";
         }
         out.close();
         return 1;
