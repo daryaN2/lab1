@@ -37,7 +37,7 @@ int Counter:: Output (std::string fout) {
         }
         wordList.sort();
         std::list <std::pair <double, std::string>>::iterator it;
-        for (auto it = wordList.begin(); it != wordList.end(); ++it) {
+        for (auto it = wordList.begin(); it != wordList.end(); it++) {
             out << it->second << "," << it->first << "," << it->first*100/count << "\n";
         }
         out.close();
