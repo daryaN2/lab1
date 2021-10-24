@@ -31,8 +31,9 @@ int Counter:: Output (std::string fout) {
         return 0;
     } else {
         std::list <std::pair <double, std::string>> wordList;
-        for (auto& i : words) {
-            wordList.emplace_back(std::make_pair(i.second, i.first));
+        std::map <std::string, int> :: iterator itW;
+        for (auto itW = words.begin(); itW != words.end(); itW++) {
+            wordList.emplace_back(std::make_pair(itW->second, itW->first));
         }
         wordList.sort();
         std::list <std::pair <double, std::string>>::iterator it;
